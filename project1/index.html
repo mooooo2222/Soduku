@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Sudoku — 9x9</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="app-header">
+    <h1>Sudoku</h1>
+    <div class="controls-top">
+      <select id="difficulty" aria-label="Choose difficulty">
+        <option value="easy">Easy</option>
+        <option value="medium" selected>Medium</option>
+        <option value="hard">Hard</option>
+      </select>
+      <button id="newGameBtn">New Game</button>
+      <button id="saveBtn">Save</button>
+      <button id="loadBtn">Load</button>
+      <button id="hintBtn">Hint</button>
+      <label class="notes-toggle">
+        <input type="checkbox" id="notesMode" /> Notes
+      </label>
+    </div>
+  </header>
+
+  <main class="game-area">
+    <section class="info-bar">
+      <div class="timer">Time: <span id="timer">00:00</span></div>
+      <div class="moves">Moves: <span id="moves">0</span></div>
+    </section>
+
+    <section id="board-container" class="board-container" aria-label="Sudoku board">
+      <!-- Grid will be rendered by JavaScript into this container -->
+      <div id="sudoku" class="sudoku-grid" role="grid" aria-describedby="board-help"></div>
+      <p id="board-help" class="visually-hidden">9 by 9 Sudoku grid. Select a cell, then choose a number from the keypad or type 1-9.</p>
+    </section>
+
+    <section class="numpad" aria-label="Number input pad">
+      <div class="numpad-row">
+        <button class="num-btn" data-num="1">1</button>
+        <button class="num-btn" data-num="2">2</button>
+        <button class="num-btn" data-num="3">3</button>
+      </div>
+      <div class="numpad-row">
+        <button class="num-btn" data-num="4">4</button>
+        <button class="num-btn" data-num="5">5</button>
+        <button class="num-btn" data-num="6">6</button>
+      </div>
+      <div class="numpad-row">
+        <button class="num-btn" data-num="7">7</button>
+        <button class="num-btn" data-num="8">8</button>
+        <button class="num-btn" data-num="9">9</button>
+      </div>
+      <div class="numpad-row">
+        <button id="eraseBtn" class="action-btn">Erase</button>
+        <button id="undoBtn" class="action-btn">Undo</button>
+        <button id="redoBtn" class="action-btn">Redo</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <div id="status" aria-live="polite"></div>
+  </footer>
+
+  <script type="module" src="js/sudoku.js" defer></script>
+  <script type="module" src="js/generator.js" defer></script>
+  <script type="module" src="js/solver.js" defer></script>
+  <script type="module" src="js/ui.js" defer></script>
+  <script type="module" src="js/storage.js" defer></script>
+</body>
+</html>
